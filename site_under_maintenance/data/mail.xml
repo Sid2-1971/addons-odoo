@@ -1,0 +1,79 @@
+<odoo>
+  <data>        
+    <record model="ir.ui.view" id="notification_form_view">
+        <field name="name">notification_form</field>
+        <field name="model">service.notification</field>
+        <field name="arch" type="xml">
+            <form string="Notification Form">
+              <header>
+                    <button name="send_mail" type="object"
+                            string="Sent Mail to all customers" class='oe_highlight'/>                                    
+                </header>
+                <sheet>
+                    <group>
+                      <field name="description"/>
+                      <field name="subject"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+
+    <record model="ir.actions.act_window" id="notification_list_action">
+      <field name="name">ser_notification</field>
+      <field name="res_model">service.notification</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <record model="ir.ui.view" id="contacts_form_view">
+        <field name="name">contact_form</field>
+        <field name="model">addcontact</field>
+        <field name="arch" type="xml">
+            <form string="contact Form">
+                <sheet>
+                  <header>
+                    <button name="send_selected_mail" type="object"
+                        string="Sent Mail" class='oe_highlight'/>                                
+                  </header>
+                  <label for="contact"/>
+                  <field name="contact"/>   
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+      <record model="ir.ui.view" id="contact_tree_view">
+        <field name="name">contact_tree</field>
+        <field name="model">addcontact</field>
+        <field name="arch" type="xml">
+          <tree string="contact Tree">
+            <field name="contact"/>
+          </tree>
+        </field>
+      </record>
+
+
+    <record model="ir.actions.act_window" id="contact_list_action">
+      <field name="name">select_partner</field>
+      <field name="res_model">addcontact</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+  
+    
+    <menuitem name="Notify Me" id="sentMail"/>
+
+
+    
+    <menuitem name="Send Mail" id="notification" parent="sentMail" action="notification_list_action"/>
+
+
+    
+
+    <menuitem name="Send Selected Mail" id="composeMail" parent="sentMail" action="contact_list_action"/>
+
+    
+  </data>
+</odoo>
