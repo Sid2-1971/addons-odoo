@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="layout" inherit_id="web.layout" name="web_window_title custom">
+            <xpath expr="//title" position="replace">
+                <title><t t-esc="title or 'Odoo'"/></title>
+            </xpath>
+        </template>
+        <template id="assets_backend" inherit_id="web.assets_backend" name="web_window_title assets">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/web_window_title/static/src/js/web_window_title.js"/>
+            </xpath>
+        </template>
+    </data>
+</openerp>
